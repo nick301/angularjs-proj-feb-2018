@@ -7,7 +7,9 @@
     <title>Angular JS Document</title>
 </head>
 <body>
-    <div ng-controller="MyCtrl">
+    <student-details my-title='Hello'></student-details>
+    <div ng-controller="MyCtrl">  
+        <student-details my-list="students" my-title='Students'></student-details>          
         <table>
             <thead>
                 <tr>
@@ -18,22 +20,28 @@
             </thead>
             <tbody>
                 <tr ng-repeat="stud in students">
-                    <td>{{stud.name}}</td>
+                    <td>{{stud.name | myCustomFilter:stud.name.length}}</td>
                     <td>{{stud.age}}</td>
+                    <td>{{stud.seniority}}</td>
                     <td>
                         <button ng-click="onClick(stud)">View {{stud.name}} Details</button>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <div ng-show="selectedStudent">
+        <!-- <div ng-show="selectedStudent">
             <h2>Student Details</h2>
             <p>Name: {{selectedStudent.name}}</p>
             <p>Age: {{selectedStudent.age}}</p>
-        </div>
+            <p>Seniority: {{selectedStudent.seniority}}</p>
+        </div> -->
+        <student-details my-title='Student Details' current-student='selectedStudent'></student-details>
+        
     </div>
 <script src="angular.js"></script>
 <script src="app.js"></script>
 <script src="app.service.js"></script>
+<script src="app.filter.js"></script>
+<script src="app.component.js"></script>
 </body>
 </html>
