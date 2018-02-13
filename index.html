@@ -8,15 +8,32 @@
 </head>
 <body>
     <div ng-controller="MyCtrl">
-        {{myval}}
-        
-        <input type="text" ng-model="myval">
-        <button ng-click="OnClick()">Click Me</button>
-        <div ng-show="myval.length === 0">
-            myval is empty.
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="stud in students">
+                    <td>{{stud.name}}</td>
+                    <td>{{stud.age}}</td>
+                    <td>
+                        <button ng-click="onClick(stud)">View {{stud.name}} Details</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-show="selectedStudent">
+            <h2>Student Details</h2>
+            <p>Name: {{selectedStudent.name}}</p>
+            <p>Age: {{selectedStudent.age}}</p>
         </div>
     </div>
 <script src="angular.js"></script>
 <script src="app.js"></script>
+<script src="app.service.js"></script>
 </body>
 </html>
