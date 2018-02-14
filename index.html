@@ -8,9 +8,13 @@
 </head>
 <body>
     <student-details my-title='Hello'></student-details>
+
+    <!--Content Placeholder where the routed pages are displayed. ui-view is a part of angular-ui-router-->
+    <ui-view style="color:blueviolet"></ui-view>
+    <br/>
     <div ng-controller="MyCtrl">  
-        <student-details my-list="students" my-title='Students'></student-details>          
-        <table>
+        <student-details my-list="students" my-title='Students'></student-details>       
+        <table style="border:solid; color:brown">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -38,7 +42,9 @@
         <student-details my-title='Student Details' current-student='selectedStudent'></student-details>
         
     </div>
+<!--The order of the below packages should be maintained -->
 <script src="angular.js"></script>
+<script src="angular-ui-router.js"></script>
 <script src="app.js"></script>
 <script src="app.service.js"></script>
 <script src="app.filter.js"></script>

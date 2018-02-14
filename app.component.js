@@ -9,6 +9,10 @@ Bindings helps in making a component reusable.
 */
 var myapp = angular.module('myapp');
 
+myapp.controller('StudentDetailCtrl', [function(){                
+    this.myname = 'Custom Component';
+}]);
+
 myapp.component('studentDetails', {
     templateUrl: 'student-details.tpl.html',
     bindings: {
@@ -17,7 +21,13 @@ myapp.component('studentDetails', {
         currentStudent: '<'
     },
     controllerAs : 'vm', //Setting alias name for controller object. If no alias, the we need to use $ctrl.
-    controller: [function(){                
-        this.myname = 'Custom Component';
-    }]
+    controller: 'StudentDetailCtrl'
+});
+
+myapp.component('homeComponent',{
+    template : '<div>This is a home page component.</div>'
+});
+
+myapp.component('aboutComponent',{
+    template : '<div>This is a about page component.</div>'
 });
